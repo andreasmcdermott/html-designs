@@ -1,0 +1,178 @@
+<html>
+<head><title>Test</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+	/*
+	 Sticky-kit v1.0.4 | WTFPL | Leaf Corcoran 2014 | http://leafo.net
+	*/
+	(function(){var b,m;b=this.jQuery;m=b(window);b.fn.stick_in_parent=function(e){var u,n,f,s,B,l,C;null==e&&(e={});s=e.sticky_class;u=e.inner_scrolling;f=e.parent;n=e.offset_top;null==n&&(n=0);null==f&&(f=void 0);null==u&&(u=!0);null==s&&(s="is_stuck");B=function(a,e,l,v,y,p,t){var q,z,k,w,c,d,A,x,g,h;if(!a.data("sticky_kit")){a.data("sticky_kit",!0);d=a.parent();null!=f&&(d=d.closest(f));if(!d.length)throw"failed to find stick parent";q=k=!1;g=b("<div />");g.css("position",a.css("position"));A=function(){var c,
+	b;c=parseInt(d.css("border-top-width"),10);b=parseInt(d.css("padding-top"),10);e=parseInt(d.css("padding-bottom"),10);l=d.offset().top+c+b;v=d.height();c=k?(k=!1,q=!1,a.insertAfter(g).css({position:"",top:"",width:"",bottom:""}),g.detach(),!0):void 0;y=a.offset().top-parseInt(a.css("margin-top"),10)-n;p=a.outerHeight(!0);t=a.css("float");g.css({width:a.outerWidth(!0),height:p,display:a.css("display"),"vertical-align":a.css("vertical-align"),"float":t});if(c)return h()};A();if(p!==v)return w=void 0,
+	c=n,h=function(){var b,h,r,f;r=m.scrollTop();null!=w&&(h=r-w);w=r;k?(f=r+p+c>v+l,q&&!f&&(q=!1,a.css({position:"fixed",bottom:"",top:c}).trigger("sticky_kit:unbottom")),r<y&&(k=!1,c=n,"left"!==t&&"right"!==t||a.insertAfter(g),g.detach(),b={position:"",width:"",top:""},a.css(b).removeClass(s).trigger("sticky_kit:unstick")),u&&(b=m.height(),p>b&&!q&&(c-=h,c=Math.max(b-p,c),c=Math.min(n,c),k&&a.css({top:c+"px"})))):r>y&&(k=!0,b={position:"fixed",top:c},b.width="border-box"===a.css("box-sizing")?a.outerWidth()+
+	"px":a.width()+"px",a.css(b).addClass(s).after(g),"left"!==t&&"right"!==t||g.append(a),a.trigger("sticky_kit:stick"));if(k&&(null==f&&(f=r+p+c>v+l),!q&&f))return q=!0,"static"===d.css("position")&&d.css({position:"relative"}),a.css({position:"absolute",bottom:e,top:"auto"}).trigger("sticky_kit:bottom")},x=function(){A();return h()},z=function(){m.off("scroll",h);b(document.body).off("sticky_kit:recalc",x);a.off("sticky_kit:detach",z);a.removeData("sticky_kit");a.css({position:"",bottom:"",top:""});
+	d.position("position","");if(k)return a.insertAfter(g).removeClass(s),g.remove()},m.on("touchmove",h),m.on("scroll",h),m.on("resize",x),b(document.body).on("sticky_kit:recalc",x),a.on("sticky_kit:detach",z),setTimeout(h,0)}};l=0;for(C=this.length;l<C;l++)e=this[l],B(b(e));return this}}).call(this);
+</script>
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<style>
+	html { font-family: arial; font-size: 14px; color: #222; background-color: #fff; }
+	h1 { display: block; background-color: #222; color: #fff; padding: 4px 12px; }
+	table { width: 1000px; border: 4px solid #222; }
+	th { text-align: left; background-color: #43dc89; color: #fff; padding: 2px 6px; }
+	td { padding: 1px 3px; }
+	a { text-decoration: none; color: #F04987; font-weight: bold; }
+	#container { width: 1000px; margin: 0 auto; }
+	td span { margin: 0 5px; }
+	td span:first-child { margin-left: 0; }
+	td span:last-child { margin-right: 0; }
+	tr:hover { background-color: #b3fEdD; }
+	tr:hover .actions a { visibility: visible; }
+	.search { margin-bottom: 10px; }
+	.search input { border: 1px solid #F04987; padding: 8px; width: 300px; }
+	.search a { background-color: #F04987; display: inline-block; padding: 10px; position: relative; left: -4px; color: #fff; }
+	.actions a { visibility: hidden; color: #fff; background-color: #F04987; display: inline-block; padding: 6px 7px; margin-right: 2px; float: left;}
+	.list .actions a:last-child { margin-right: 0; } 
+	.actions { background-color: #fff; }
+	.list-container { width: 1600px; position: relative; }
+	.list-outer-container {  overflow: hidden; min-height: 400px; }
+	h2 { margin: 0; background-color: #43dc89; color: #fff; padding: 2px 6px; }
+	label { font-weight: bold; display: block; color: #43dc89; }
+	#display { width: 890px; background-color: #fff; border: 4px solid #222; border-right: none; position: absolute; z-index: 1000; left: 1000px; top: 30; padding: 10px 0 10px 10px; }
+	ul { list-style-type: none; padding: 0; margin: 0; }
+	li { padding: 0; margin: 0; }
+	.close-display { font-size: 20px; padding: 10px; display: block; background-color: #F04987; color: #fff;  }
+	#overlay { width: 100%; height: 100%; z-index: 100; top: 0; left: 0; position: absolute; display: none; background-color: rgba(0, 0, 0, 0.3); }
+</style>
+</head>
+<body>
+<div id="container">
+	<h1>Users</h1>
+	<div class="search">
+		<input type="text" placeholder="Search by name, AD id, roles or email" />
+		<a href="#" class="clear-search"><i class="fa fa-times"></i></a>
+	</div>
+	<div class="list-outer-container">
+		<div class="list-container">
+			<table class="list">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Roles</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			<div id="overlay">&nbsp;</div>
+			<div id="display">
+				&nbsp;
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var users = [{ Name: "Andreas McDermott", Email: "andreas.mcdermott@email.com", Id: "andreasmcd", Roles: ['Admin', 'Editor'] },
+								 { Name: "Jack Reacher", Email: "jack.reacher@somewhere.com", Id: "jreacher", Roles: ['Admin',] },
+								 { Name: "Mr. Anderson", Email: "mr.andersson@thematrix.com", Id: "neo", Roles: ['Editor'] },
+								 { Name: "Max Payne", Email: "max.payne@email.com", Id: "mpayne", Roles: ['Editor'] },
+								 { Name: "Han Solo", Email: "han.solo@farfaraway.com", Id: "the-falcon", Roles: ['Editor', 'User'] },
+								 { Name: "Winston Churchill", Email: "winston.churchill@v.com", Id: "wchurchill", Roles: ['User'] },
+								 { Name: "Andy Kaufman", Email: "andy.kaufman@email.com", Id: "andy", Roles: ['User'] },
+								 { Name: "Dr. Strangelove", Email: "drstrangelove@email.com", Id: "strange<3", Roles: ['User'] },
+								 { Name: "Princess Leia", Email: "pleia@forcemail.com", Id: "leia", Roles: ['User'] },
+								 { Name: "Peter Parker", Email: "peterparker@email.com", Id: "peter.parker123", Roles: ['User'] },
+								 { Name: "Swedish Chef", Email: "swedishchef@mail.com", Id: "swedishchef", Roles: ['User'] },
+								 { Name: "Mrs. Doubtfire", Email: "mrsdoubtfire@rip.com", Id: "dfire", Roles: ['User'] },
+								 { Name: "Wyatt Earp", Email: "wearp@wwmail.com", Id: "wyatt", Roles: ['User'] }];
+								 
+	$(function () {
+		loadAllUsers();
+		
+		$(document).on('keyup', '.search input', function () {
+			var query = $(this).val().toLowerCase();
+			
+			if(query.length > 0) {
+				findUsers(query);
+			}
+			else {
+				$('.list tbody tr').show();
+			}
+		});
+		
+		$(document).on('click', '.clear-search', function (e) {
+			e.preventDefault();
+			$('.search input').val('');
+			$('.list tbody tr').show();
+		});
+		
+		$(document).on('click', '.edit-user', function (e) {
+			e.preventDefault();
+			displayUser($(this).attr('data-id'));
+		});
+		
+		$(document).on('click', '.remove-user', function (e) {
+			e.preventDefault();
+			hideDisplay();
+			$('.list tr[data-id="' + $(this).attr('data-id') + '"]').remove();
+		});
+		
+		$(document).on('click', '.close-display', function (e) {
+			e.preventDefault();
+			hideDisplay();
+		});
+	});
+
+	function loadAllUsers() {
+		$('.list tbody').html('');
+		$.each(users, function (n, user) {
+			$('.list tbody').append(
+				'<tr data-id="' + n + '"> \
+					<td class="actions" style="width: 60px;"> \
+						<a href="#" class="edit-user" data-id="' + n + '"><i class="fa fa-pencil"></i></a> \
+						<a href="#" class="remove-user" data-id="' + n + '"><i class="fa fa-trash-o"></i></a> \
+					</td> \
+					<td>' + user.Id + '</td> \
+					<td>' + user.Name + '</td> \
+					<td><a href="#">' + user.Email + '</a></td> \
+					<td>' + user.Roles.join(', ') + '</td> \
+				</tr>');
+		});
+	}
+	
+	function showDisplay() {
+		$('#display').animate({ left: 100 }, 'fast');
+		$('#overlay').fadeIn('fast');
+	}
+	
+	function hideDisplay(cb) {
+		$('#display').animate({ left: 1000 }, 'fast', cb);
+		$('#overlay').fadeOut('fast');
+	}
+	
+	function displayUser(n) {
+		hideDisplay(function () {
+			$('#display').html(
+				'<h2>' + users[n].Id + '</h2> \
+				<p><label>Name</label>' + users[n].Name + '</p> \
+				<p><label>Email</label><a href="#">' + users[n].Email + '</a></p> \
+				<p><label>Roles</label><ul><li>' + users[n].Roles.join('</li><li>') + '</li></ul></p> \
+				<a href="#" class="close-display"><i class="fa fa-arrow-right"></i>');
+				
+			showDisplay();
+		});
+	}
+	
+	function findUsers(query) {
+		$('.list tbody tr').hide();
+		$.each(users, function (n, user) {
+			if(user.Email.toLowerCase().indexOf(query) >= 0 ||
+				 user.Name.toLowerCase().indexOf(query) >= 0 ||
+				 user.Id.toLowerCase().indexOf(query) >= 0) {
+				
+				$('.list tbody tr[data-id="' + n + '"]').show();
+			}
+		});
+	}
+</script>
+</body>
+</html>
