@@ -1,0 +1,192 @@
+<html>
+<head><title>Test</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+/*
+ Sticky-kit v1.0.4 | WTFPL | Leaf Corcoran 2014 | http://leafo.net
+*/
+(function(){var b,m;b=this.jQuery;m=b(window);b.fn.stick_in_parent=function(e){var u,n,f,s,B,l,C;null==e&&(e={});s=e.sticky_class;u=e.inner_scrolling;f=e.parent;n=e.offset_top;null==n&&(n=0);null==f&&(f=void 0);null==u&&(u=!0);null==s&&(s="is_stuck");B=function(a,e,l,v,y,p,t){var q,z,k,w,c,d,A,x,g,h;if(!a.data("sticky_kit")){a.data("sticky_kit",!0);d=a.parent();null!=f&&(d=d.closest(f));if(!d.length)throw"failed to find stick parent";q=k=!1;g=b("<div />");g.css("position",a.css("position"));A=function(){var c,
+b;c=parseInt(d.css("border-top-width"),10);b=parseInt(d.css("padding-top"),10);e=parseInt(d.css("padding-bottom"),10);l=d.offset().top+c+b;v=d.height();c=k?(k=!1,q=!1,a.insertAfter(g).css({position:"",top:"",width:"",bottom:""}),g.detach(),!0):void 0;y=a.offset().top-parseInt(a.css("margin-top"),10)-n;p=a.outerHeight(!0);t=a.css("float");g.css({width:a.outerWidth(!0),height:p,display:a.css("display"),"vertical-align":a.css("vertical-align"),"float":t});if(c)return h()};A();if(p!==v)return w=void 0,
+c=n,h=function(){var b,h,r,f;r=m.scrollTop();null!=w&&(h=r-w);w=r;k?(f=r+p+c>v+l,q&&!f&&(q=!1,a.css({position:"fixed",bottom:"",top:c}).trigger("sticky_kit:unbottom")),r<y&&(k=!1,c=n,"left"!==t&&"right"!==t||a.insertAfter(g),g.detach(),b={position:"",width:"",top:""},a.css(b).removeClass(s).trigger("sticky_kit:unstick")),u&&(b=m.height(),p>b&&!q&&(c-=h,c=Math.max(b-p,c),c=Math.min(n,c),k&&a.css({top:c+"px"})))):r>y&&(k=!0,b={position:"fixed",top:c},b.width="border-box"===a.css("box-sizing")?a.outerWidth()+
+"px":a.width()+"px",a.css(b).addClass(s).after(g),"left"!==t&&"right"!==t||g.append(a),a.trigger("sticky_kit:stick"));if(k&&(null==f&&(f=r+p+c>v+l),!q&&f))return q=!0,"static"===d.css("position")&&d.css({position:"relative"}),a.css({position:"absolute",bottom:e,top:"auto"}).trigger("sticky_kit:bottom")},x=function(){A();return h()},z=function(){m.off("scroll",h);b(document.body).off("sticky_kit:recalc",x);a.off("sticky_kit:detach",z);a.removeData("sticky_kit");a.css({position:"",bottom:"",top:""});
+d.position("position","");if(k)return a.insertAfter(g).removeClass(s),g.remove()},m.on("touchmove",h),m.on("scroll",h),m.on("resize",x),b(document.body).on("sticky_kit:recalc",x),a.on("sticky_kit:detach",z),setTimeout(h,0)}};l=0;for(C=this.length;l<C;l++)e=this[l],B(b(e));return this}}).call(this);
+</script>
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<style>
+	html { font-family: arial; font-size: 14px; color: #222; background-color: #fefefe; }
+	#container { width: 1000px; margin: 50px auto; }
+	h1 { display: block;}
+	h1 a { margin-left: 20px; padding: 2px 6px; }
+	h1 a span { display: none; padding-left: 6px; font-size: 0.6em; position: relative; top: -0.2em; }
+	h1 a:hover { background-color: #3299ec; color: #fff; }
+	h1 a:hover span { display: inline-block; }
+	h2 { padding: 0; margin: 0; }
+	p { margin: 4px 0; }
+	label { display: block; font-weight: bold; font-size:0.9em; }
+	.list, .search { width: 400px; float: left; }
+	.search { position: relative; }
+	.display { display: none; width: 560px; float: right; padding: 10px; background-color: #fff; border: 2px solid #FFA427; border-top-width: 6px; }
+	.row { border: 2px solid #4882B1; background-color: #ededed; border-left-width: 6px; margin-bottom: 6px; position: relative; }
+	.row:hover .actions { display: block; }
+	.row.active { border-color: #FFA427; }
+	.info { width: auto; float: left; display: block; width: 392px; }
+	.actions { position: absolute; top: 0; left: -30px; display: none; }
+	.data { display: inline-block; padding: 2px 4px; }
+	.adid { background-color: #ededed; padding: 2px 0; text-align: center; width: 46%; }
+	.name { padding: 2px 1px; }
+	.inner-container { background-color: #fff; margin-bottom: 2px; }
+	.inner-container:last-child { margin-bottom: 0; }
+	a { text-decoration: none; color: #3299ec; }
+	ul { list-style-type: none; padding: 0; margin: 0; }
+	li { padding: 0; margin: 0; }
+	.display li { margin: 0; padding: 0;}
+	.display p { padding: 4px 0 0 0; }
+	.actions li a { background-color: #3299ec; display: inline-block; padding: 8px 0; text-align: center; width: 28px; color: #fff; font-weight: bold; text-decoration: none; }
+	.list-paginator { float: right; }
+	.list-paginator li { padding: 2px 6px; float: left; }
+	.list-paginator { font-weight: bold; }
+	input[type="text"] { border: 1px solid #3299ec; padding: 2px; width: 60%; }
+	.search a { background-color: #3299ec; color: #fff; position: relative; left: -4px; padding: 3px; }
+</style>
+</head>
+<body>
+<div id="container">
+	<h1>Users<a href="#" class="new-user">+<span>New user</span></a></h1>
+	
+	<div style="width: 100%;">
+		<div class="search">
+			<input type="text" placeholder="Search by name, username or email" />
+			<a href="#" class="clear-search"><i class="fa fa-times"></i></a>
+		</div>
+	</div>
+	<div style="padding-bottom: 16px;">&nbsp;</div>
+	<div class="list"></div>
+	<div class="display"></div>
+	<div style="clear:both;"></div>
+</div>
+<script>
+	var users = [{ Name: "Andreas McDermott", Email: "andreas.mcdermott@email.com", Id: "andreasmcd", Roles: ['Admin', 'Editor'] },
+								 { Name: "Jack Reacher", Email: "jack.reacher@somewhere.com", Id: "jreacher", Roles: ['Admin',] },
+								 { Name: "Mr. Anderson", Email: "mr.andersson@thematrix.com", Id: "neo", Roles: ['Editor'] },
+								 { Name: "Max Payne", Email: "max.payne@email.com", Id: "mpayne", Roles: ['Editor'] },
+								 { Name: "Han Solo", Email: "han.solo@farfaraway.com", Id: "the-falcon", Roles: ['Editor', 'User'] },
+								 { Name: "Winston Churchill", Email: "winston.churchill@v.com", Id: "wchurchill", Roles: ['User'] },
+								 { Name: "Andy Kaufman", Email: "andy.kaufman@email.com", Id: "andy", Roles: ['User'] },
+								 { Name: "Dr. Strangelove", Email: "drstrangelove@email.com", Id: "strange<3", Roles: ['User'] },
+								 { Name: "Princess Leia", Email: "pleia@forcemail.com", Id: "leia", Roles: ['User'] },
+								 { Name: "Peter Parker", Email: "peterparker@email.com", Id: "peter.parker123", Roles: ['User'] },
+								 { Name: "Swedish Chef", Email: "swedishchef@mail.com", Id: "swedishchef", Roles: ['User'] },
+								 { Name: "Mrs. Doubtfire", Email: "mrsdoubtfire@rip.com", Id: "dfire", Roles: ['User'] },
+								 { Name: "Wyatt Earp", Email: "wearp@wwmail.com", Id: "wyatt", Roles: ['User'] }];
+								 
+	$(function () {
+		$('.display').stick_in_parent();
+		loadAllUsers();
+		
+		$(document).on('keyup', '.search input', function () {
+			var query = $(this).val().toLowerCase();
+			
+			if(query.length > 0) {
+				findUsers(query);
+			}
+			else {
+				$('.list .row').show();
+			}
+		});
+		
+		$(document).on('click', '.clear-search', function (e) {
+			e.preventDefault();
+			$('.search input').val('');
+			$('.list .row').show();
+		});
+		
+		$(document).on('click', '.new-user', function (e) {
+			e.preventDefault();
+			$('.row.active').removeClass('active');
+			$('.display').slideUp('fast', function () {
+				$('.display').html('<h2>New user</h2><p>The form for adding new user would go here.</p>');
+				showDisplay();
+			});
+		});
+		
+		$(document).on('click', '.edit-user', function (e) {
+			e.preventDefault();
+			var link = this;
+			$('.display').slideUp('fast', function () { 
+				var i = parseInt($(link).attr('data-id'), 10);
+				displayUser(i);
+			});
+		});
+		
+		$(document).on('click', '.remove-user', function (e) {
+			e.preventDefault();
+			if($(this).closest('.row').hasClass('active')) {
+				hideDisplay();
+			}
+			$(this).closest('.row').slideUp('fast', function () { $(this).remove(); });
+		});
+	});
+	
+	function showDisplay() {
+		$('.display').slideDown('slow', function () { $(document.body).trigger("sticky_kit:recalc"); });
+	}
+	
+	function hideDisplay() {
+		$('.display').slideUp('fast', function () { $(document.body).trigger("sticky_kit:recalc"); });
+	}
+	
+	function findUsers(query) {
+		$('.list .row').hide();
+		$.each(users, function (n, user) {
+			if(user.Email.toLowerCase().indexOf(query) >= 0 ||
+				 user.Name.toLowerCase().indexOf(query) >= 0 ||
+				 user.Id.toLowerCase().indexOf(query) >= 0) {
+				
+				$('.list .row[data-id="' + n + '"]').show();
+			}
+		});
+	}
+	
+	function displayUser(n) {
+		$('.row.active').removeClass('active');
+		$('.row[data-id="' + n + '"]').addClass('active');
+		$('.display').html(
+			'<h2>' + users[n].Id + '</h2> \
+			<p><label>Name</label>' + users[n].Name + '</p> \
+			<p><label>Email</label><a href="#">' + users[n].Email + '</a></p> \
+			<p><label>Roles</label><ul><li>' + users[n].Roles.join('</li><li>') + '</li></ul></p>');
+		showDisplay();
+	}
+	
+	function loadAllUsers() {
+		$('.list').html('');
+		$.each(users, function (n, user) {
+			var roles = '';
+			for(var i = 0; i < user.Roles.length; ++i) {
+				roles += '<div class="data role">' + user.Roles[i] + '</div>';
+			}
+			$('.list').append(
+				'<div class="row" data-id="' + n + '"> \
+					<div class="info"> \
+						<div class="inner-container"> \
+							<div class="data adid">' + user.Id + '</div> \
+							<div class="data name">' + user.Name + '</div> \
+						</div> \
+						<div class="inner-container"> \
+							<div class="data email"><a href="#">' + user.Email + '</a></div> \
+						</div> \
+						<div class="inner-container"> \
+							<div class="data role">' + user.Roles.join('</div><div class="data role">') + '</div> \
+						</div> \
+					</div> \
+					<ul class="actions"> \
+						<li><a href="#" class="edit-user" data-id="' + n + '"><i class="fa fa-pencil"></i></a></li> \
+						<li><a href="#" class="remove-user" data-id="' + n + '"><i class="fa fa-trash-o"></i></a></li> \
+					</ul> \
+					<div style="clear:both;"></div> \
+				</div>');
+		});
+	}
+</script>
+</body>
+</html>
